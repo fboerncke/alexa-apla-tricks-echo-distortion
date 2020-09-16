@@ -10,7 +10,7 @@ The basic idea is to use APL-A to say an utterance **multiple times** in paralle
 
 ## How to configure?
 
-In the example code you can create various echo and distortion effects by modifying the parameters "**offset**" (any integer describing delays in milliseconds) and "**echoNum**" (from 1 to 10).
+In the example code you can create various echo and distortion effects by modifying the parameters "**offset**" (any integer describing delays in milliseconds) and "**echoNum**" (from 1 to 10) at the very end of the file within the **datasources** segment of the json.
 
 ## Use the "Multimodal Responses" feature in the developer console
 
