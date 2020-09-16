@@ -1,0 +1,204 @@
+{
+    "document": {
+        "type": "APLA",
+        "version": "0.8",
+        "mainTemplate": {
+            "parameters": [
+                "payload"
+            ],
+            "item": {
+                "type": "Sequencer",
+                "items": [
+                    {
+                        "type": "Mixer",
+                        "items": [
+                            {
+                                "type": "Sequencer",
+                                "items": [
+                                    {
+                                        "type": "Silence",
+                                        "duration": 0
+                                    },
+                                    {
+                                        "type": "Speech",
+                                        "contentType": "SSML",
+                                        "content": "<speak>${payload.data.text}</speak>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Sequencer",
+                                "when": "${payload.data.echoNum>=1}",
+                                "items": [
+                                    {
+                                        "type": "Silence",
+                                        "duration": "${1*payload.data.offset}"
+                                    },
+                                    {
+                                        "type": "Speech",
+                                        "contentType": "SSML",
+                                        "content": "<speak>${payload.data.text}</speak>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Sequencer",
+                                "when": "${payload.data.echoNum>=2}",
+                                "items": [
+                                    {
+                                        "type": "Silence",
+                                        "duration": "${2*payload.data.offset}"
+                                    },
+                                    {
+                                        "type": "Speech",
+                                        "contentType": "SSML",
+                                        "content": "<speak>${payload.data.text}</speak>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Sequencer",
+                                "when": "${payload.data.echoNum>=3}",
+                                "items": [
+                                    {
+                                        "type": "Silence",
+                                        "duration": "${3*payload.data.offset}"
+                                    },
+                                    {
+                                        "type": "Speech",
+                                        "contentType": "SSML",
+                                        "content": "<speak>${payload.data.text}</speak>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Sequencer",
+                                "when": "${payload.data.echoNum>=4}",
+                                "items": [
+                                    {
+                                        "type": "Silence",
+                                        "duration": "${4*payload.data.offset}"
+                                    },
+                                    {
+                                        "type": "Speech",
+                                        "contentType": "SSML",
+                                        "content": "<speak>${payload.data.text}</speak>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Sequencer",
+                                "when": "${payload.data.echoNum>=5}",
+                                "items": [
+                                    {
+                                        "type": "Silence",
+                                        "duration": "${5*payload.data.offset}"
+                                    },
+                                    {
+                                        "type": "Speech",
+                                        "contentType": "SSML",
+                                        "content": "<speak>${payload.data.text}</speak>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Sequencer",
+                                "when": "${payload.data.echoNum>=6}",
+                                "items": [
+                                    {
+                                        "type": "Silence",
+                                        "duration": "${6*payload.data.offset}"
+                                    },
+                                    {
+                                        "type": "Speech",
+                                        "contentType": "SSML",
+                                        "content": "<speak>${payload.data.text}</speak>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Sequencer",
+                                "when": "${payload.data.echoNum>=7}",
+                                "items": [
+                                    {
+                                        "type": "Silence",
+                                        "duration": "${7*payload.data.offset}"
+                                    },
+                                    {
+                                        "type": "Speech",
+                                        "contentType": "SSML",
+                                        "content": "<speak>${payload.data.text}</speak>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Sequencer",
+                                "when": "${payload.data.echoNum>=8}",
+                                "items": [
+                                    {
+                                        "type": "Silence",
+                                        "duration": "${8*payload.data.offset}"
+                                    },
+                                    {
+                                        "type": "Speech",
+                                        "contentType": "SSML",
+                                        "content": "<speak>${payload.data.text}</speak>"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Sequencer",
+                                "when": "${payload.data.echoNum>=9}",
+                                "items": [
+                                    {
+                                        "type": "Silence",
+                                        "duration": "${9*payload.data.offset}"
+                                    },
+                                    {
+                                        "type": "Speech",
+                                        "contentType": "SSML",
+                                        "content": "<speak>${payload.data.text}</speak>"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "type": "Mixer",
+                        "items": [
+                            {
+                                "type": "Audio",
+                                "source": "soundbank://soundlibrary/ui/gameshow/amzn_ui_sfx_gameshow_countdown_loop_64s_minimal_01",
+                                "filter": [
+                                    {
+                                        "type": "Trim",
+                                        "start": 0,
+                                        "end": "${payload.data.clipLength}"
+                                    },
+                                    {
+                                        "type": "FadeOut",
+                                        "duration": 500
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "Speech",
+                                "contentType": "SSML",
+                                "content": "<speak>${payload.data.afterText}</speak>"
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    },
+    "datasources": {
+        "data": {
+            "text": "This is the text supposed to sound like an echo!",
+            "offset": 350,
+            "echoNum": 3,
+            "afterText": "And this is a text without echo effect; Do you like this?",
+            "clipLength": 2500
+        }
+    }
+}
